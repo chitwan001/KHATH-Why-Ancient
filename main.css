@@ -1,0 +1,2416 @@
+body{
+    margin: 0;
+    --selectedlabel : #d93025;
+    --selectednewlabelcolor : #000000;
+    user-select: none;
+    --selectedemaillabel : #000000;
+}
+.body{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-rows: 1fr 12fr;
+    grid-gap: 5px;
+    position: relative;
+}
+.mainbody{
+    display: grid;
+    position: relative;
+}
+.header{
+    background-color: #f2f2f2;
+    display: grid;
+    grid-template-columns: 0.5fr 8fr 4fr;
+}
+.tooltip{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    padding: .2vw;
+    border-radius: 6px;
+    font-size: .85vw;
+    font-family: 'Zen Antique', serif;
+    display: grid;
+    transition: opacity 0.3s;
+    z-index: 15;
+    user-select: none;
+}
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -25%;
+    border-width: 0.36vw;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+.faitt::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 98%;
+    margin-left: -25%;
+    border-width: 0.36vw;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+.newlabeltt::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 90%;
+    margin-left: -25%;
+    border-width: 0.36vw;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+.forwardtt::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 80%;
+    margin-left: -25%;
+    border-width: 0.36vw;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+.sidepaneltt::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 75%;
+    margin-left: -25%;
+    border-width: 0.36vw;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+.markasurtt::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 110%;
+    margin-left: -25%;
+    border-width: 0.36vw;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+.alignicons{
+    place-self: auto;
+}
+.icon:hover .tooltip{
+    visibility: visible;
+    opacity: 1;
+}
+.icon:hover .faitt{
+    visibility: visible;
+    opacity: 1;
+}
+.icon:hover .sidepaneltt{
+    visibility: visible;
+    opacity: 1;
+}
+.icon:hover .newlabeltt{
+    visibility: visible;
+    opacity: 1;
+}
+.icon:hover .forwardtt{
+    visibility: visible;
+    opacity: 1;
+}
+.icon:hover .markasurtt{
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon:hover .addlabeltool{
+    visibility: visible;
+    opacity: 1;
+}
+.bodycont{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-gap: 5px;
+}
+.filters{
+    background-color: #f2f2f2;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+.filterscontent{
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+.allfilters{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.allfilterscontent{
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    font-family: 'Roboto';
+}
+.allfilterscontent:hover{
+    background-color: rgb(231, 231, 231);
+}
+.filtertypecontentmaindiv{
+    display: none;
+    grid-template-rows: 1fr .1fr;
+}
+.composeemail{
+    display: grid;
+}
+.modifylabelmodal{
+    display: none;
+    width: 50%;
+    height: 60%;
+    place-self: center;
+    background-color: #fafafa;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+}
+.selectedemailmaindiv{
+    display: none;
+}
+.composelabel{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+        'labelicon labelicon'
+        'sectionwhere sectionwhere';
+    cursor: pointer;
+    grid-template-rows: 11fr 1fr;
+    width: 30%;
+    height: 100%;
+    position: relative;
+}
+.composelabellabeldiv{
+    display: grid;
+    position: relative;
+    width: 40%;
+}
+.composeicon{
+    transform: rotate(-40deg);
+}
+.composeemailcontent{
+    display: grid;
+    width: 90%;
+    height: 60%;
+    place-self: center;
+    grid-gap: 5px;
+    background-color: #FBFBFB;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.composeemailcontent:hover{
+    background-color: #f4f4f4;
+}
+.composeemaildiv{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    width: 95%;
+    place-self: center;
+}
+.composeemailmaindiv{
+    display: none;
+    grid-template-rows: 9fr 1.5fr;
+}
+.composeemailheader{
+    display: grid;
+    background-color: black;
+}
+.composeemailicon{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+.composeemailicon svg{
+    width: inherit;
+}
+.composeemailbody{
+    display: grid;
+}
+.composeemailbodymain{
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+.composecontent{
+    display: grid;
+}
+.composecontentbody{
+    display: grid;
+    grid-template-rows: 1fr 1fr 9fr;
+}
+.senderinputs{
+    display: grid;
+    
+}
+.toinput{
+    display: grid;
+    grid-template-columns: 1fr 20fr;
+    border-bottom: 1px solid #d2d1d1;
+}
+.toplaceholder{
+    display: grid;
+    place-content: center;
+    font-family: roboto;
+    font-size: 1.1rem;
+    color: #9e9e9e;
+}
+.subjectplaceholder{
+    display: grid;
+    place-content: center;
+    font-family: roboto;
+    font-size: 1.1rem;
+    color: #9e9e9e;
+}
+.subjectinput{
+    display: grid;
+    grid-template-columns: 1fr 15fr;
+    border-bottom: 1px solid #d1d2d2;
+}
+.textareato{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+.toarea{
+    display: grid;
+    position: relative;
+}
+.toareamaintext{
+    height: 50%;
+    align-self: center;
+    border: 0;
+    outline: 0;
+    resize: none;
+}
+.toareamaintext:not(:focus)+.receipentsdisplay{
+    display: none;
+}
+.receipentsdisplay{
+    display: none;
+    position: absolute;
+    width: 25vw;
+    max-width: 100%;
+    height: 600%;
+    top: 105%;
+    background-color: #fafafa;
+    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    cursor: pointer;
+    overflow-y: scroll;
+}
+.receipentsdisplay::-webkit-scrollbar{
+    display: none;
+}
+.toreceipents{
+    width: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.toreceipentsdiv{
+    display: grid;
+    max-width: 40vw;
+    overflow-x: scroll;
+}
+.toinputvalue{
+    position: absolute;
+    display: none;
+    width: 0;
+}
+.textareasubject{
+    display: grid;
+}
+.subjectofmail{
+    border: 0;
+    outline: 0;
+    font-size: 1rem;
+}
+.bodyinputdiv{
+    display: grid;
+}
+.bodyinput{
+    /* display: grid; */
+    border: 0;
+    outline: 0;
+    font-size: 1rem;
+    padding: 1rem;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+}
+.composeemailcontrollers{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+.maincontrollers{
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr .5fr 1fr 1fr;
+    grid-gap: 10px;
+}
+.textformatting{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: #f3dfdf;
+    border-radius: 10px;
+}
+.linksandothers{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: #f3dfdf;
+    border-radius: 10px;
+}
+.link{
+    display: grid;
+    position: relative;
+}
+.unlink{
+    display: grid;
+}
+.linkbtnscontroller{
+    display: grid;
+    place-content: center;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.linkcontent{
+    display: grid;
+}
+#linkname{
+    background-color: #f1f1f1;
+    border: 0;
+    outline: none;
+    width: 90%;
+    height: 70%;
+    place-self: center;
+    border-radius: 5px;
+}
+.createlink{
+    display: grid;
+    align-self: center;
+    font-family: 'Roboto';
+    cursor: pointer;
+}
+.createlink:hover{
+    font-weight: 600;
+}
+.hrrow{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-content: center;
+    font-family: 'Roboto';
+    font-size: 1rem;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    font-weight: 600;
+    cursor: pointer;
+}
+#blanksuborcont{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #dcdcdc52;
+    z-index: 10;
+}
+#norecepdefined{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #dcdcdc52;
+    z-index: 10;
+}
+.norecepdefinedmodal{
+    width: 30%;
+    height: 20%;
+    place-self: center;
+    background-color: #fafafa;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-rows: 1.5fr 2fr 1.5fr;
+}
+.errornorecepdefined{
+    display: grid;
+    font-family: 'Roboto';
+    font-size: 1.54rem;
+    place-content: center;
+}
+.bodyerrnorecep{
+    display: grid;
+    font-family: 'Hind';
+    place-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #646363;
+}
+.controlsnorecep{
+    display: grid;
+    position: relative;
+}
+#openemail{
+    display: none;
+    grid-template-rows: 15vh 10vh auto;
+}
+.selectedemailmaindiv{
+    display: none;
+    grid-template-rows: 15vh 10vh auto;
+}
+.maildisptitle{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+.maildispbody{
+    height: 100%;
+    overflow-y: scroll;
+    user-select: text;
+}
+.mailtextcontent{
+    display: grid;
+    font-family: 'Roboto';
+    font-size: 1.53rem;
+    /* text-align: center; */
+    font-weight: 600;
+    align-self: center;
+}
+.mailcontrolssenderdetails{
+    display: grid;
+    grid-template-columns: 1fr 4fr 5fr;
+    grid-gap: 5px
+}
+.mailcontrolssendername{
+    display: grid;
+}
+.mailsenderindpic{
+    display: grid;
+    border-radius: 100%;
+    background-color: gainsboro;
+    height: 80%;
+    overflow: hidden;
+    border: 0.2px solid gainsboro;
+    place-self: center
+}
+.dispsendername{
+    display: grid;
+    font-family: 'Roboto';
+    font-weight: 600;
+}
+.dispsenderemailid{
+    display: grid;
+    font-family: 'Roboto';
+    font-size: .85rem;
+    color: gray;
+    font-weight: 600;
+}
+.mailcontrolssenderothers{
+    display: grid;
+}
+.mailsenderdetails{
+    display: grid;
+    height: 60%;
+    align-self: center;
+}
+.mailsenderindpic img{
+    width: 100%;
+}
+.maildispcontrols{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.mailcontrols{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.mailcontrolsothers{
+    display: grid;
+}
+.mailcontrolsotherscontent{
+    display: grid;
+    width: 67%;
+    left: 33%;
+    position: relative;
+}
+.mailcontrolothersmaincontent{
+    display: grid;
+    width: 100%;
+    position: relative;
+    grid-template-columns: 2fr 1fr;
+}
+.thismailsenttime{
+    display: grid;
+    font-size: .9rem;
+    font-family: 'Roboto';
+    place-content: center;
+    font-weight: 600;
+    color: gray;
+}
+.thismailadditionalcontrols{
+    display: grid;
+}
+.additionalcontrolsmain{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.replyforwardthis{
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+.underlabelthisdiv{
+    display: grid;
+}
+.thisemaillabel{
+    color: var(--selectedemaillabel) !important;
+}
+#openemail:target{
+    display: grid;
+}
+#openemail:target+.emailscontentmainmain{
+    display: none;
+}
+.okbtnnorecep{
+    position: absolute;
+    width: 15%;
+    height: 80%;
+    align-self: center;
+    left: 83%;
+    place-content: center;
+    display: grid;
+    background-color: rgb(26,115,232);
+    color: white;
+    font-family: 'Zen Kaku Gothic Antique';
+    border-radius: 5px;
+    cursor: pointer;
+}
+.replythis{
+    display: grid;
+}
+.forwardthis{
+    display: grid;
+}
+
+.okbtnnorecep:hover{
+    background-color: #124991;
+}
+.bsoctitle{
+    display: grid;
+    place-content: center;
+    font-family: 'ROBOTO';
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.bsocbody{
+    display: block;
+    place-content: center;
+    font-family: 'Roboto Condensed';
+    font-size: 1.1rem;
+    text-align: center;
+}
+.bsoccontrols{
+    display: grid;
+    position: relative;
+}
+.bsoccontrolsmain{
+    display: grid;
+    width: 40%;
+    height: 100%;
+    left: 60%;
+    position: absolute;
+    grid-template-columns: 1fr 1fr;
+}
+.editbtn{
+    display: grid;
+    align-self: center;
+    font-family: 'Roboto';
+    font-size: 1.1rem;
+    justify-self: end;
+    cursor: pointer;
+}
+.submitmailbtn{
+    display: grid;
+    width: 60%;
+    height: 80%;
+    place-self: center;
+    place-content: center;
+    font-family: 'Roboto';
+    font-size: 1.1rem;
+    background-color: rgb(26,115,232);
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submitmailbtn:hover{
+    background-color: #124991;
+}
+.blanksuborcontmodal{
+    display: grid;
+    width: 50%;
+    height: 20%;
+    place-self: center;
+    background-color: #ffffff;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    border-radius: 10px;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.ccdisp .indivrecepcont{
+    border: 1px solid #124991;
+}
+.bccdisp .indivrecepcont{
+    border: 1px solid rgb(25, 253, 25);
+}
+.objresize{
+    display: grid;
+}
+.resizeanobj{
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.resizeanobj:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.linkbtnscontroller:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.pastelink{
+    position: absolute;
+    width: 20vw;
+    height: 3vw;
+    bottom: 110%;
+    background-color: #e1e1e1;
+    display: none;
+    grid-template-columns: 5fr 1fr;
+}
+.attachandothers{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #f3dfdf;
+    border-radius: 10px;
+}
+.extracontrollers{
+    display: grid;
+}
+.composedata{
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: -100%;
+}
+.sendemailbtn{
+    width: 10%;
+    height: 80%;
+    float: right;
+    background-color: #1A73E8;
+    align-self: center;
+    position: relative;
+    left: 90%;
+    border-radius: 5px;
+    color: #fafafa;
+    font-family: 'Roboto';
+    display: grid;
+    place-content: center;
+    font-size: 1.35rem;
+    cursor: pointer;
+}
+.sendemailbtn:hover{
+    background-color: #124991;
+}
+.insertimage{
+    display: grid;
+    position: relative;
+}
+
+.insertimgbtn{
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.insertimgbtn:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.addimagediv{
+    position: absolute;
+    bottom: 110%;
+    width: 15vw;
+    height: 15vw;
+    right: -100%;
+    display: none;
+    background-color: #f3dfdf;
+    grid-template-rows: 1fr .01fr 1fr;
+}
+.imgseperator{
+    background-color: #cfcfcf;
+}
+#imagelink{
+    display: grid;
+    width: 90%;
+    height: 50%;
+    border: none;
+    outline: none;
+    /* background-color: #f1f1f1; */
+    place-self: center;
+    border-radius: 5px;
+}
+.addlinkimage{
+    display: grid;
+    justify-self: center;
+    font-family: 'Roboto';
+    font-size: 1rem;
+    cursor: pointer;
+}
+.attachments{
+    display: grid;
+}
+.attachmentbtn{
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.attachmentbtn:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.signature{
+    display: grid;
+}
+.signbtn{
+    display: grid;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.signaturemain{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    background-color: #fafafa69;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    z-index: 6;
+    cursor: default;
+}
+.signaturemodal{
+    display: grid;
+    place-self: center;
+    width: 40%;
+    height: 40%;
+    background-color: #f2f2f2;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+}
+.addnewsignature{
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+}
+.addsigncontent{
+    display: grid;
+}
+.addsignform{
+    display: grid;
+}
+.formcontents{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.signname{
+    align-self: center;
+    width: 80%;
+    height: 50%;
+    border: 0;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    outline: 0;
+}
+.signlabels{
+    display: grid;
+    place-self: center;
+    font-family: 'Roboto';
+    font-size: 1rem;
+}
+.signtextdiv{
+    display: grid;
+}
+.penimg{
+    background-image: url(https://www.gstatic.com/images/icons/material/system/1x/ink_pen_black_20dp.png);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.addlinkimage:hover{
+    font-weight: 600;
+}
+.imagelinkform{
+    display: grid;
+}
+.imagethroulink{
+    display: grid;
+}
+.strikebtn{
+    display: grid;
+}
+.textstyles{
+    background-color: #f3dfdf;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+.undoredo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #f3dfdf;
+    border-radius: 10px;
+}
+.undoredocont{
+    display: grid;
+    place-content: center;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.undoredocont:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.textbackground{
+    display: grid;
+    position: relative;
+}
+.textbackrep{
+    display: grid;
+    place-self: center;
+    grid-template-rows: 1fr .1fr;
+    cursor: pointer;
+}
+.textsizerepicon{
+    display: grid;
+}
+.textbackcolor{
+    background-color: transparent;
+}
+.textbackmain{
+    position: absolute;
+}
+.bulletsformating{
+    display: grid;
+    background-color: #f3dfdf;
+    border-radius: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.listbuttons{
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.listbuttons:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.textalignment{
+    display: grid;
+    background-color: #f3dfdf;
+    border-radius: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.leftalign{
+    display: grid;
+    place-content: center;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.midalign{
+    display: grid;
+    place-content: center;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.rightalign{
+    display: grid;
+    place-content: center;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.controllerfamily{
+    padding: 0.3rem;
+    border-radius: 100%;
+}
+.leftalign:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.rightalign:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.midalign:hover .controllerfamily{
+    background-color: #d2d1d1;
+}
+.textfont{
+    display: grid;
+    position: relative;
+}
+.fontfont{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.fontmain{
+    display: grid;
+    place-content: center;
+    font-family: 'ROBOTO';
+    min-width: 100%;
+    width: max-content;
+}
+.textsize{
+    display: grid;
+    position: relative;
+}
+.textsizemain{
+    position: absolute;
+    width: 220%;
+    height: 20vh;
+    bottom: 110%;
+    display: none;
+    right: 0;
+    background-color: #e3e3e3;
+    font-family: 'Roboto';
+}
+.textsizerep{
+    display: grid;
+    place-content: center;
+}
+.textsizerep:hover+.textsizemain{
+    display: grid;
+}
+.textsizemain:hover{
+    display: grid;
+}
+.small{
+    display: grid;
+    place-content: center;
+    font-size: small;
+    cursor: pointer;
+}
+.small:hover{
+    background-color: #8080804a;
+}
+.normal{
+    display: grid;
+    place-content: center;
+    font-size: medium;
+    cursor: pointer;
+}
+.normal:hover{
+    background-color: #8080804a;
+}
+.large{
+    display: grid;
+    place-content: center;
+    font-size: x-large;
+    cursor: pointer;
+}
+.large:hover{
+    background-color: #8080804a;
+}
+.huge{
+    display: grid;
+    place-content: center;
+    font-size: xxx-large;
+    cursor: pointer;
+}
+.huge:hover{
+    background-color: #8080804a;
+}
+.fontmaincontent{
+    display: grid;
+    overflow-x: scroll;
+}
+.fontmaincontent::-webkit-scrollbar{
+    display: none;
+}
+.dropdownforfont{
+    display: none;
+    position: absolute;
+    width: 140%;
+    height: 30vh;
+    bottom: 110%;
+    background-color: #e3e3e3;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr
+}
+.sansserif{
+    font-family: sans-serif;
+    cursor: pointer;
+    place-content: center;
+    display: grid;
+}
+.sansserif:hover{
+    background-color: #8080804a;
+}
+.poppins{
+    font-family: Poppins;
+    place-content: center;
+    display: grid;
+    cursor: pointer;
+}
+.poppins:hover{
+    background-color: #8080804a;
+}
+.robotocond{
+    font-family: Roboto Condensed;
+    place-content: center;
+    display: grid;
+    cursor: pointer;
+}
+.robotocond:hover{
+    background-color: #8080804a;
+}
+.overpass{
+    font-family: Overpass;
+    cursor: pointer;
+    place-content: center;
+    display: grid;
+}
+.overpass:hover{
+    background-color: #8080804a;
+}
+.merriweather{
+    cursor: pointer;
+    font-family: Merriweather Sans;
+    place-content: center;
+    display: grid;
+}
+.merriweather:hover{
+    background-color: #8080804a;
+}
+.roboto{
+    font-family: Roboto;
+    place-content: center;
+    display: grid;
+    cursor: pointer;
+}
+.roboto:hover{
+    background-color: #8080804a;
+}
+.selected{
+    color: gray;
+    cursor: not-allowed;
+}
+.selectedsize{
+    color: gray;
+    cursor: not-allowed;
+}
+.ddwnarrow{
+    display: grid;
+}
+.boldbtn{
+    display: grid;
+}
+.italicbtn{
+    display: grid;
+}
+.underlinebtn{
+    display: grid;
+}
+.changecolourbtn{
+    display: grid;
+    position: relative;
+}
+.controllersicon{
+    cursor: pointer;
+    border-radius: 100%;
+    place-self: center;
+    width: 80%;
+    height: 80%;
+    display: grid;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    place-content: center
+}
+.controllersicon:hover{
+    background-color: #d2d1d1;
+}
+.controllersicon:active{
+    background-color: rgb(226, 221, 221);
+}
+.changecontrollercolourbtn{
+    font-family: 'Roboto' !important;
+    font-weight: bolder !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: grid;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+.changecolourcontent{
+    display: grid;
+    grid-template-rows: 1fr .2fr;
+}
+.changecolourcontentdiv{
+    position: absolute;
+    width: 20vw;
+    height: 8vh;
+    bottom: 100%;
+    display: none;
+    background-color: #f5edef;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.cccdivdiv{
+    display: grid;
+    position: relative;
+}
+.addcontentcolor{
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    right: 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.ccdivcontmaincont{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 150%;
+}
+.cccdivcontmain{
+    display: grid;
+    overflow-x: scroll;
+}.cccdivcontmain::-webkit-scrollbar{
+    display: none;
+}
+.colourcontollerrep{
+    background-color: black;
+}
+.controllersiconicon{
+    place-self: center;
+}
+.tolabelsclosebtn{
+    font-size: 1rem !important;
+}
+.toreceipentsdiv::-webkit-scrollbar{
+    display: none;
+}
+.indivrecep{
+    display: grid;
+    position: relative;
+}
+.indivrecepcont{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: 70%;
+    place-self: center;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px, rgb(0 0 0 / 8%) 0px 0px 0px 1px;
+    cursor: pointer;
+}
+.indivrecepcont:hover{
+    background-color: #e0dcdc;
+}
+.indrecepcontname{
+    display: grid;
+    place-self: center;
+    font-family: 'Rajdhani';
+    padding-left: 0.1rem;
+}
+.indrecepcontclose{
+    display: grid;
+}
+.indreceiptto{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+.indreceiptto:hover{
+    background-color: #eaeaea;
+}
+.topic{
+    display: grid;
+    padding: 0.3rem;
+}
+.topicpic{
+    width: 90%;
+    height: 95%;
+    display: grid;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 1px solid #d3d2d2;
+    place-self: center;
+}
+.topicpic img{
+    width: 100%;
+    height: 100%;
+}
+.tosendername{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+.tosendercontrols{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.ccbcc{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Lato';
+    font-size: .9rem;
+}
+.cc{
+    place-self: center;
+    cursor: pointer;
+}
+.cc:hover{
+    color: rgb(26, 115, 232);
+}
+.bcc{
+    place-self: center;
+    cursor: pointer;
+}
+.bcc:hover{
+    color: rgb(26, 115, 232);
+}
+.sendersinfo{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    font-family: 'Roboto Condensed';
+}
+.tosenderemail{
+    font-size: .9rem;
+    color: gray;
+    font-weight: 600;
+}
+.usercontrolsonmain{
+    display: grid;
+    place-content: center;
+    font-family: 'Roboto';
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+.usercontrolsonmain:hover{
+    background-color: #cccccc;
+}
+.finalcompose{
+    display: grid;
+    justify-content: center;
+    font-family: Roboto;
+    font-size: 1.3rem;
+    color: #1a73e8;
+}
+.emails{
+    display: grid;
+    /* grid-template-rows: 1fr 10fr; */
+    grid-template-columns: 13fr 1fr;
+    /* grid-template-areas:
+        'label label label sidep'
+        'displayemail displayemail displayemail sidep'; */
+    grid-gap: 5px;
+
+        
+}
+.hamburger{
+    display: grid;
+}
+.hcontent{
+    place-self: center;
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+.hamcont{
+    place-self: center;
+    cursor: pointer;
+    display: grid;
+    border-radius: 50%;
+    transition: 0.2s linear;
+    padding: 0.4vw;
+    position: relative;
+}
+.search{
+    display: grid;
+}
+.searchcont{
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+.searchinput{
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+.mainsearch{
+    display: grid;
+    padding: 0.5vw;
+}
+.mainsearchcontent{
+    display: grid;
+    grid-template-columns: 1fr 15fr 1fr;
+    position: relative;
+}
+.inputsearch{
+    border: 0;
+    outline: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.searchcontent{
+    position: absolute;
+    width: auto;
+    display: none;
+    height: 20vh;
+    background-color: white;
+    top: 99%;
+    left: 0;
+    right: 0;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    z-index: 10;
+}
+.searchicon{
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: grid;
+}
+.icon{
+    place-self: center;
+    color: #716f6f;
+    border-radius: 50%;
+    padding: 0.2vw;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    display: grid;
+}
+.icon:hover{
+    background-color: #d5d2d291;
+}
+.advancearrow{
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: grid;
+}
+.myicons{
+    height: 100%;
+    display: grid !important;
+    font-size: 1.8vw !important;
+}
+.hamburgicon{
+    height: 100%;
+    display: grid !important;
+    font-size: 2vw !important;
+}
+.clearsearch{
+    display: grid;
+}
+.cscont{
+    align-self: center;
+    font-size: 1vw;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    padding-left: 10%;
+    color: blue;
+    display: none;
+    width: fit-content;
+    cursor: pointer;
+}
+.account{
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.4fr;
+}
+.useracc{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+.disptime{
+    font-family: 'Zen Antique', serif;
+    color: #716f6f;
+    place-self: center;
+    transition: .5s linear;
+}
+.usergreet{
+    font-family: 'Roboto Condensed', sans-serif;
+    align-self: center;
+    user-select: none;
+    justify-self: center;
+}
+.userport{
+    display: grid;
+    position: relative;
+    grid-template-columns: 5fr 1fr;
+}
+.drpdwnarr{
+    font-size: 1.4vw !important;
+    height: fit-content;
+    width: fit-content;
+    align-self: center;
+    cursor: pointer;
+    color: #716f6f;
+}
+.expanduser{
+    display: grid;
+}
+.dropdown{
+    position: absolute;
+    width: 70%;
+    height: 30vh;
+    top: 99%;
+    background-color: #fafafa;
+    display: none;
+    /* grid-template-rows: 3fr 1fr; */
+    right: 0;
+    box-shadow: rgb(17 12 46 / 15%) 0px 48px 100px 0px;
+    border: 1px solid #dddbdb;
+    /* left: -75%; */
+    z-index: 10;
+}
+.show{
+    display: grid !important;
+}
+.help{
+    display: grid;
+}
+.ddwnusershort{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.shortcuts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.notifications{
+    display: grid;
+}
+.notificationnumber{
+    position: absolute;
+    right: -35%;
+    top: -25%;
+    border-radius: 50%;
+    background-color: #d63031;
+    padding: 1.8px;
+    color: white;
+    width: 1.1vw;
+    height: 1.1vw;
+    display: grid;
+    place-content: center;
+    font-family: 'Lato';
+}
+.notimaindiv{
+    position: absolute;
+    top: 8%;
+    width: 22vw;
+    height: 40vh;
+    right: 27%;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    z-index: 5;
+    display: none;
+    overflow-y: scroll;
+}
+.notimaindiv::-webkit-scrollbar{
+    display: none;
+}
+.notimaindivcont{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.indinoti{
+    display: grid;
+    justify-content: center;
+    font-family: 'Roboto';
+    padding-top: 1vh;
+    cursor: pointer;
+    position: relative;
+}
+.notitime{
+    position: absolute;
+    bottom: 0;
+    right: 0.5vw;
+    font-size: .8rem;
+    color: gray;
+    font-weight: 600;
+}
+.indinoti:hover{
+    background-color: lightgray;
+}
+.notificationnumber:empty{
+    display: none;
+}
+.notificationtt{
+    left: -35%;
+}
+.emailmaindiv{
+    /* grid-area: label; */
+    display: grid;
+}
+.labelicon{
+    display: grid;
+    place-content: center;
+    grid-area: labelicon;
+}
+.emaillabels{
+    display: grid;
+    position: relative;
+    overflow-x: clip;
+}
+.emaillabels::-webkit-scrollbar{
+    display: none;
+}
+.emaildisp{
+    /* grid-area: displayemail; */
+}
+.emailscontentmainmain{
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+}
+.sidepanel{
+    /* grid-area: sidep; */
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+}
+.contentindcontrolsindmail{
+    display: grid;
+}
+.sidecontrolsicon{
+    font-size: 30px !important;
+}
+.sidecontrolsicon:active{
+    color: black;
+}
+.sidemailcontrolsinput{
+    position: absolute;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+.sideemailcontrols{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.label{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+        'labelicon labelname'
+        'sectionwhere sectionwhere';
+    cursor: pointer;
+    grid-template-rows: 11fr 1fr;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.selectedemaillabel{
+    display: grid;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    grid-template-rows: 11fr 1fr;
+    grid-template-areas:
+        'labelname'
+        'sectionwhere';
+}
+.label:hover{
+    background-color: #eaeaea;
+}
+.mainname{
+    display: grid;
+    width: 90%;
+    /* grid-template-columns: 1fr 10fr;
+    align-self: center;
+    grid-gap: 0.5vw; */
+}
+.labelname{
+    display: grid;
+    grid-area: labelname;
+}
+.sectionwhere{
+    grid-area: sectionwhere;
+}
+.sectionwhereselectmail{
+    display: grid;
+    display: none;
+    background-color: var(--selectedlabel);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.newcont{
+    display: none;
+}
+.labellabelname{
+    display: grid;
+    align-content: center;
+    font-family: 'Roboto';
+    letter-spacing: .03vw;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+.labellabelnamecontent{
+    width: fit-content;
+    display: grid;
+}
+.labellabelname::-webkit-scrollbar{
+    display: none;
+}
+.newart{
+    display: grid;
+    width: .5rem;
+    height: .5rem;
+    background-color: #188038;
+    color: #fff;
+    border-radius: 100%;
+    position: absolute;
+    top: 6%;
+    left: 2%;
+}
+.activelabel{
+    color: var(--selectedlabel);
+    background-color: #f6f6f6;
+}
+.activelabel .sectionwhere{
+    display: grid;
+}
+.activelabel+.closetab{
+    display: grid;
+}
+.notactivelabel{
+    color: #8b8b8b;
+}
+.closebtn{
+    display: grid;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    right: 0;
+    place-content: center;
+    cursor: pointer;
+}
+.closebtnbtn{
+    font-size: 1rem !important;
+}
+.emailcontent{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 0.5vw;
+    height: 70%;
+}
+.sectionwhere{
+    display: none;
+    background-color: var(--selectedlabel);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.emaildisp{
+    display: grid;
+}
+.emaildispcontent{
+    display: grid;
+    overflow-y: scroll;
+}
+.emailsdispcontent{
+    display: grid;
+    overflow-y: scroll;
+}
+.emaildispcontent::-webkit-scrollbar{
+    display: none;
+}
+.closetab{
+    position: absolute;
+    right: 0;
+    top: 5%;
+    display: none;
+}
+.closelabel{
+    padding: 0;
+    font-size: 1.2vw !important;
+}
+.emailscontent{
+    display: none;
+    grid-template-rows: 1fr .1fr;
+}
+.addlabel{
+    position: absolute;
+    height: 100%;
+    width: 8%;
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    z-index: 5;
+}
+.blankdiv{
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.98) 20%, rgba(255, 255, 255, 0) 80%);
+}
+.addlabelbtndiv{
+    display: grid;
+}
+.addlabelbtn{
+    justify-self: center;
+    display: grid;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+.addlabeltool{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    padding: .2vw;
+    border-radius: 6px;
+    font-size: .85vw;
+    font-family: 'Zen Antique', serif;
+    display: grid;
+    transition: opacity 0.3s;
+    z-index: 5;
+    user-select: none;
+    right: 3%;
+}
+.addlabeltool::after{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    margin-left: -25%;
+    border-width: 0.36vw;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+    left: 96%;
+}
+.openlabeldiv{
+    background-color: #fafafa;
+    display: none;
+    position: absolute;
+    width: 450%;
+    height: fit-content;
+    top: 98%;
+    right: 0;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+
+}
+.email2{
+    display: none;
+}
+.createnewlabel{
+    place-content: center;
+    display: grid;
+    font-family: 'Hind';
+    color: black;
+    cursor: pointer;
+}
+.createnewlabel:hover{
+    background-color: #ececec;
+}
+.existlabels{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    cursor: pointer;
+    border-bottom: 1px solid #e1e1e1;
+}
+.existlabels:hover{
+    background-color: #ececec;
+}
+.labelicon1{
+    display: grid;
+    place-content: center;
+}
+.existlabelname{
+    display: grid;
+    place-content: center;
+    font-family: 'Roboto';
+}
+#primary{
+    color: #d93025;
+}
+.labeldiv{
+    display: grid;
+    position: relative;
+}
+.showemails{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0.5rem;
+    width: 99%;
+    height: 99%;
+    place-self: center;
+}
+.createlabelmodal{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #dcdcdc69;
+    z-index: 15;
+}
+.createmodal{
+    display: grid;
+    place-self: center;
+    width: 50%;
+    height: 50%;
+    background-color: #fafafa;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    grid-template-rows: 5fr 1fr
+}
+.createlabelactions{
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    font-family: 'Roboto';
+    letter-spacing: 0.1px
+}
+.createlabelbtns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.cancelcreatelabelbtn{
+    display: grid;
+    place-self: center;
+    width: 90%;
+    height: 60%;
+    background-color: #eeeeee;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    place-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.successcreatelabelbtn{
+    display: grid;
+    place-self: center;
+    width: 90%;
+    height: 60%;
+    background-color: #008CBA;
+    box-shadow: rgb(9 147 188 / 18%) 0px 1px 3px 0px, rgb(9 147 188) 0px 0px 0px 1px;
+    place-content: center;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto';
+    letter-spacing: 0.1px;
+    font-size: 1rem;
+}
+.errormodal{
+    justify-self: center;
+    position: absolute;
+    padding: 1vw;
+    top: 1%;
+    background-color: #dc3545;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    display: none;
+    user-select: none;
+}
+.successmodal{
+    justify-self: center;
+    position: absolute;
+    padding: 1vw;
+    background-color: #28a745;
+    width: 10%;
+    display: none;
+    place-content: center;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    user-select: none;
+}
+.modifylabels{
+    display: grid;
+    width: fit-content;
+    place-content: center;
+    padding-left: 3%;
+    color: #1a73e8;
+}
+.createlabelmainform{
+    display: grid;
+}
+.createlabelform{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.createlabelformcontent{
+    display: grid;
+    place-self: center;
+    width: 95%;
+    height: 95%;
+    grid-template-rows: 1fr 1fr 4fr;
+}
+.iconlabel{
+    align-self: auto !important;
+}
+.samplenewlabel{
+    display: grid;
+}
+.samplenewlabelcontent{
+    display: grid;
+    place-self: center;
+    width: 95%;
+    height: 95%;
+    grid-template-rows: 1fr 7fr;
+    user-select: none;
+    pointer-events: none;
+}
+.samplelabelnamediv{
+    display: grid;
+
+}
+.newlabeloptions{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.newlabelinputlabels{
+    display: grid;
+    align-self: center;
+    font-family: 'Lato';
+    font-weight: 600;
+    padding-left: 3%;
+}
+.inputnewlabelinputdiv{
+    display: grid;
+    font-family: 'Roboto';
+}
+.newlabelinputfields{
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    align-self: center;
+    height: 50%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-family: 'ROBOTO';
+    font-size: 1rem;
+}
+.newlabelinputfields:focus{
+    box-shadow: rgb(9 147 188 / 18%) 0px 1px 3px 0px, rgb(9 147 188) 0px 0px 0px 1px;
+}
+.newlabelsemailslist{
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+}
+.newcolordiv{
+    display: grid;
+    position: relative;
+}
+.addnewcolor{
+    position: absolute;
+    height: 100%;
+    width: 10%;
+    right: 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.addnewcoloricon{
+    display: grid;
+    background-color: #fafafa;
+}
+.addnewcolor::before{
+    content: "";
+    background: linear-gradient(to left, rgba(250, 250, 250, 0.98) 20%, rgba(250, 250, 250, 0) 80%);
+    width: 120%;
+}
+.addcontentcolor::before{
+    content: "";
+    background: linear-gradient(to left, rgba(250, 250, 250, 0.98) 20%, rgba(250, 250, 250, 0) 80%);
+    width: 120%;
+}
+.fornewcoloriconicon{
+    place-self: center;
+}
+.newcolors{
+    display: grid;
+    overflow-x: scroll;
+}
+.newcolors::-webkit-scrollbar{
+    display: none;
+}
+.newcolorscontent{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 200%;
+}
+.indcolor{
+    display: grid;
+}
+.indcolordiv{
+    display: grid;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    place-self: center;
+}
+.indcolordiv input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+.indcolordiv input:checked{
+    border: 2px dashed;
+    border-radius: 100%;
+    box-shadow: rgb(0 0 0 / 28%) 0px 10px 36px 0px, rgb(0 0 0 / 6%) 0px 0px 0px 1px;
+}
+.colorrep{
+    background-color: #510c92;
+    display: grid;
+    width: 2vw;
+    height: 2vw;
+    place-self: center;
+    border-radius: 100%;
+}
+.addemaillabel{
+    align-self: unset;
+}
+.iconlabelscontentdiv{
+    display: grid;
+}
+.iconlabelscontent{
+    display: grid;
+    overflow-y: scroll;
+}
+.iconlabelscontent::-webkit-scrollbar{
+    display: none;
+}
+.iconlabelscontentmain{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    color: var(--selectednewlabelcolor);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 250%;
+}
+.emailistbar{
+    display: grid;
+    width: 10%;
+    justify-self: end;
+    background-color: var(--selectednewlabelcolor);
+    height: 100%;
+}
+.samplelabelnamediv{
+    display: grid;
+    grid-template-columns: 1fr 4fr
+}
+.selectedlabelname{
+    display: grid;
+    align-content: center;
+    font-family: 'Roboto';
+}
+.selectediconnewlabel{
+    display: grid;
+}
+.selectediconnewlabeldiv{
+    display: grid;
+    place-self: center;
+    position: relative;
+    width: 40%;
+    height: 55%;
+    border-radius: 100%;
+}
+.selectediconnewlabel input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 100%;
+}
+.selectediconnewlabel input:checked{
+    border: 2px dashed;
+}
+.checklabeliconicon{
+    font-size: 1.9vw;
+}
+.selectediconnewlabelclass{
+    height: fit-content;
+    display: grid;
+    border-radius: 100%;
+    width: fit-content;
+    place-self: center;
+}
+.selectedlabelicon{
+    display: grid;
+    color: var(--selectednewlabelcolor);
+    place-content: center;
+}
+.inboxnolabel{
+    background-color: #e2e2e2;
+    display: grid;
+    border-radius: 5px;
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    overflow: hidden;
+}
+.notread{
+    font-weight: bold;
+    background-color: #f2f2f2;
+    border: 1px dashed;
+    box-shadow: none;
+}
+.inboxnolabelcontent{
+    display: grid;
+    grid-template-rows: 1.5fr 4fr 1fr;
+    width: 97%;
+    height: 97%;
+    place-self: center;
+}
+.mailtitle{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 100%;
+}
+.mailcontent{
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+.mailcontrols{
+    display: grid;
+    grid-template-columns: 3fr 4fr 1fr;
+}
+.threedotcontrol{
+    display: grid;
+}
+.selectedemailcheckbox{
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    height: 35%;
+    place-self: center;
+    outline: 0;
+    border: 2px solid gray;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+.selectedemailcheckboxtickmark{
+    content: "";
+    position: absolute;
+    display: none;
+    left: 25%;
+    top: 5%;
+    width: 0.21vw;
+    height: 1.1vh;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(
+45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(
+45deg);
+}
+.forwardtt{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    padding: 0.2vw;
+    border-radius: 6px;
+    font-size: .85vw;
+    font-family: 'Zen Antique', serif;
+    display: grid;
+    transition: opacity 0.3s;
+    z-index: 15;
+    user-select: none;
+    left: -50%;
+}
+.newlabeltt{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    padding: 0.2vw;
+    border-radius: 6px;
+    font-size: .85vw;
+    font-family: 'Zen Antique', serif;
+    display: grid;
+    transition: opacity 0.3s;
+    z-index: 15;
+    user-select: none;
+    left: -100%;
+}
+.markasurtt{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    padding: 0.2vw;
+    border-radius: 6px;
+    font-size: .85vw;
+    font-family: 'Zen Antique', serif;
+    display: grid;
+    transition: opacity 0.3s;
+    z-index: 15;
+    user-select: none;
+    left: -200%;
+}
+.faitt{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    padding: 0.2vw;
+    border-radius: 6px;
+    font-size: .85vw;
+    font-family: 'Zen Antique', serif;
+    display: grid;
+    transition: opacity 0.3s;
+    z-index: 15;
+    user-select: none;
+    left: -250%;
+}
+.sidepaneltt{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    padding: 0.2vw;
+    border-radius: 6px;
+    font-size: .85vw;
+    font-family: 'Zen Antique', serif;
+    display: grid;
+    transition: opacity 0.3s;
+    z-index: 15;
+    user-select: none;
+    left: -50%;
+}
+.selectedemailcheckboxischecked{
+    background-color: mediumslateblue;
+    border: 2px solid mediumslateblue;
+}
+.mailsubject{
+    display: grid;
+    width: 100%;
+    overflow-y: scroll;
+}
+.mailsubject::-webkit-scrollbar{
+    display: none;
+}
+.mailsubjectcontent{
+    display: grid;
+    align-self: center;
+    font-family: 'Zen Kaku Gothic Antique';
+    font-size: 1.2rem;
+    width: max-content;
+    max-height: 100%;
+}
+.mailbody{
+    display: grid;
+}
+.mailbodycontent{
+    display: grid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Zen Kaku Gothic Antique';
+}
+.timeelaps{
+    font-family: Roboto;
+    color: #808080;
+    display: grid;
+    align-self: center;
+    font-size: .9rem;
+}
+.openmailbtn{
+    display: grid;
+}
+.openmailbtnbtn{
+    display: grid;
+    width: 80%;
+    height: 80%;
+    place-self: center;
+    background-color: #d93025;
+    cursor: pointer;
+    color: white;
+    font-family: 'Hind';
+    place-content: center;
+}
+.sendername{
+    display: grid;
+    align-content: center;
+    overflow-x: scroll;
+    max-height: 100%;
+}
+.sendername::-webkit-scrollbar{
+    display: none;
+}
+.sendernamecontent{
+    width: max-content;
+    font-family: rajdhani;
+    font-size: 1.4rem;
+}
+.sendericon{
+    display: grid;
+}
+.sendericoncontent{
+    width: 3vw;
+    height: 3vw;
+    border-radius: 100%;
+    background-color: antiquewhite;
+    place-self: center;
+    overflow: hidden;
+}
+.sendericoncontent img{
+    width: 100%;
+}
+.emaildivdisp{
+    display: grid;
+}
+.addedtoarchive{
+    animation: addmailtoarchive .2s forwards ;
+}
+@keyframes addmailtoarchive {
+    0%{
+        display: grid;
+        height: 100%;
+    }
+    50%{
+        display: grid;
+        height: 50%;
+    }
+    100%{
+        display: none;
+        height: 0%;
+        border: none;
+    }
+}

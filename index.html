@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login-SANDESH</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="forgpassmodal" id="forgpassmodal">
+            <div class="modal">
+                <div class="modaltitle">
+                    <div class="forgpass">
+                        Forgot your Password?
+                    </div>
+                    <div class="wearehere">WE ARE HERE TO HELP YOU OUT!</div>
+                </div>
+                <div class="modalcontent">
+                    <div class="mainmodal">
+                        <div class="mobileno" id="mobileno">
+                            
+                        </div>
+                        <div class="recemail" id="recemail" loading="lazy">Email</div>
+                    </div>
+                    <div class="linkcontentmodal">
+                        <div class="tryanother">
+                            <div class="trycontent" onclick="changeforgpasscont()">Try another way</div>
+                        </div>
+                        <div class="confirm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="closebtn" onclick="closeforgmodal()">&#10006;</div>
+        </div>
+        <div class="mainbody">
+                <div class="loginmodal">
+                    <div class="title">SANDESH</div>
+                    <form method="post" name="loginform" class="loginform" onsubmit="return(validate());" novalidate>
+                        <div class="formcontent">
+                            <div class="inputemaildiv">
+                                <input type="text" name="email" id="email" class="inputlogin" placeholder="Email">
+                                <div class="warndiv" id="warndiv">
+                                    <div class="warn" id="warn">&#9888</div>
+                                </div>
+                            </div>
+                            <div class="inputemaildiv">
+                                <input type="password" name="pass" id="pass" class="inputlogin" placeholder="Password">
+                                <div class="warndiv" id="passwarndiv">
+                                    <div class="warn" id="passwarn">&#9888</div>
+                                </div>
+                            </div>
+                            <div class="forgotpass" onclick="forgotpassmodal()">Forgot Password?</div>
+                            <input type="submit" value="Submit" class="submitbtn">
+                            <a href="signup.html" class="createacc">CREATE AN ACCOUNT</a>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <script src="index.js" async defer></script>
+    </body>
+</html>

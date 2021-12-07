@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANDESH</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Overpass:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mainbody">
+    <div class="body">
+        <div class="header">
+            <div class="hamburger">
+                <div class="hcontent" >
+                    <div class="hamcont" onclick="resizefilters()">
+                        <div class="icon">
+                            <i class="material-icons hamburgicon">
+                                menu
+                            </i>
+                            <div class="tooltip">Resize Menu</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search">
+                <div class="searchcont">
+                    <div class="searchinput">
+                        <div class="mainsearch">
+                            <div class="mainsearchcontent">
+                                <div class="advancearrow">
+                                    <div class="icon">
+                                        <i class="material-icons myicons">tune</i>
+                                        <div class="tooltip">Advance</div>
+                                    </div>
+                                </div>
+                                <input onkeyup="usersearch()" type="text" name="search" id="inputsearch" class="inputsearch" placeholder="Search mails" autocomplete="off" onfocus="inputchangeonfocus()" onfocusout = "outfocusinput()">
+                                <div class="searchicon">
+                                    <div class="icon">
+                                        <i class="material-icons myicons" >
+                                            search
+                                        </i>
+                                        <div class="tooltip">Search</div>
+                                    </div>
+                                </div>
+                                <div class="searchcontent" id="searchcontent"></div>
+                            </div>
+                        </div>
+                        <div class="blanksearch"></div>
+                    </div>
+                    <div class="clearsearch">
+                        <div class="cscont" id="cscont">
+                            Clear Search
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="account">
+                <div class="shortcuts">
+                    <div class="notifications">
+                        <div class="icon" onclick="opennotimaindiv()">
+                            <i class="material-icons">
+                                notifications
+                            </i>
+                            <div class="tooltip notificationtt">Notifications</div>
+                            <div class="notificationnumber" id="notificationnumber"></div>
+                        </div>
+                        <div class="notimaindiv" id ="notimaindiv">
+                            <div class="notimaindivcont" id="notimaindivcont">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="useracc" id="useracc">
+                    <div class="disptime" id="disptime" onload="gettime()"></div>
+                    <div class="userport">
+                        <div class="usergreet" id="usergreet"></div>
+                        <div class="expanduser" onclick="showdropdown()" onmouseover="changegreet()" onmouseleave="originalgreet()">
+                            <div class="icon">
+                                <i class="material-icons drpdwnarr">
+                                    arrow_drop_down
+                                </i>
+                            </div>
+                        </div>
+                        <div class="dropdown" id="ddwn">
+                            <div class="ddwnusershort" id="ddwnusershort">
+                                <div class="usercontrolsonmain" onclick="gotosettings()">Settings</div>
+                                <div class="usercontrolsonmain" onclick="logoutuser()">Logout</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="help">
+                    <div class="icon">
+                        <i class="material-icons myicons">
+                            help_outline
+                        </i>
+                        <div class="tooltip">Help</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="bodycont" id="bodycont">
+            <div class="filters">
+                <div class="filterscontent">
+                    <div class="composeemail">
+                        <div class="composeemailcontent" onclick="showcomposeemail()">
+                            <div class="composeemaildiv">
+                            <div class="composeemailicon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 19.47"><defs><style>.cls-1{fill:#21963e;}.cls-2{fill:none;}</style></defs><title>createemailAsset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M18.45,0H1.55A1.54,1.54,0,0,0,0,1.53V14.45A1.54,1.54,0,0,0,1.53,16H13.74a5.18,5.18,0,0,1,0-2H2V4l8,5,8-5V9.74a5.18,5.18,0,0,1,2,0V1.55A1.54,1.54,0,0,0,18.47,0ZM10,7,2,2H18Z"/><path class="cls-1" d="M18.45,0H1.55A1.54,1.54,0,0,0,0,1.53V14.45A1.54,1.54,0,0,0,1.53,16H13.74a5.18,5.18,0,0,1,0-2H2V4l8,5,8-5V9.74a5.18,5.18,0,0,1,2,0V1.55A1.54,1.54,0,0,0,18.47,0ZM10,7,2,2H18Z"/><path class="cls-2" d="M19.85,5.63l-7.7,6.16,6.16,7.68L26,13.32ZM16.39,15.76l4.29-4.49-5.32,3.21-1.8-2.26,9-2.49L18.18,18Z"/><path class="cls-1" d="M13.56,12.22l1.8,2.26,5.32-3.21-4.29,4.49L18.18,18l4.43-8.27Zm2,1.18L15,12.68l3.24-.89Zm2.5,3.12-.57-.71,2.15-2.26Z"/><polygon class="cls-1" points="19.63 13.55 18.05 16.52 17.48 15.81 19.63 13.55"/><polygon class="cls-1" points="18.22 11.79 15.55 13.4 14.98 12.68 18.22 11.79"/></g></g></svg></div>
+                            <div class="finalcompose">Send an Email</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="allfilters">
+                        <div class="allfilterscontent" data-allfilterstype="star" onclick="openthefilters('Starred')">Starred</div>
+                        <div class="allfilterscontent" data-allfilterstype="sent" onclick="openthefilters('Sent')">Sent</div>
+                        <div class="allfilterscontent" data-allfilterstype="allmail" onclick="openthefilters('All Mails')">All mails</div>
+                        <div class="allfilterscontent" data-allfilterstype="spam" onclick="openthefilters('Spam')">Spam</div>
+                        <div class="allfilterscontent" data-allfilterstype="trash" onclick="openthefilters('Bin')">Bin</div>
+                        <div class="allfilterscontent" data-allfilterstype="archive" onclick="openthefilters('Archive')">Archive</div>
+                    </div>
+                </div>
+                <div class="ads"></div>
+            </div>
+            <div class="emails">
+                <div class="emailscontentmainmain">
+                <div class="emailmaindiv">
+                    <div class="emaillabels" id="emaillabels">
+                        <div class="emailcontent" id="emailcontent">
+                            <div class="label activelabel" id="primary" onclick="changelabel(this)" data-lid=0>
+                                <div class="labelicon">
+                                    <i class="material-icons">
+                                    inbox
+                                </i>
+                            </div>
+                            <div class="labelname">
+                                <div class="mainname">
+                                    <div class="labellabelname">Inbox</div>
+                                </div>
+                                <div class="newcont"></div>
+                            </div>
+                            <div class="sectionwhere" id="sectionwhere"></div>
+                        </div>
+                    </div>
+                    <div class="addlabel">
+                        <div class="blankdiv"></div>
+                        <div class="addlabelbtndiv">
+                            <div class="addlabelbtn">
+                                <div class="icon" onclick="openlabel()">
+                                    <i class="material-icons addlabelicon">
+                                        add
+                                    </i>
+                                </div>
+                                <div class="openlabeldiv" id="openlabeldiv">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+                <div class="emaildisp" id="emaildisp">
+                    <div class="emailscontent emaildivdisp" id="0primary">
+                        <div class="emaildispcontent" id="emaildispcontent">
+                            <div class="showemails" id="0showemails">
+                                
+                            </div>
+                        </div>
+                        <div class="pageno" id="0pageno"></div>
+                    </div>
+                    <div class="composeemailmaindiv" id="composeemailmain">
+                        <div class="composeemailbody">
+                            <div class="composeemailbodymain">
+                                <div class="composecontent">
+                                    <div class="composecontentbody">
+                                            <div class="toinput">
+                                                <div class="toplaceholder">To:</div>
+                                                <div class="textareato">
+                                                    <input type="text" name="toinputvalue" class="toinputvalue" id="toinputvalue">
+                                                    <div class="toreceipentsdiv" id="toreceipentsdiv">
+                                                        <div class="toreceipents" id="toreceipents">
+                                                            
+                                                    </div>
+                                                </div>
+                                                    <div class="toarea">
+                                                        <textarea name="toarea" id="toarea" class="toareamaintext" onkeyup="retreivetoreceipt(this)"></textarea>
+                                                        <div class="receipentsdisplay" id="receipentsdisplay">
+                                                            <div class="indreceiptto" data-toid="1">
+                                                                <div class="topic">
+                                                                    <div class="topicpic">
+                                                                        <img src="assets/propic/1.jpeg" alt="" srcset="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tosendername">
+                                                                    <div class="sendersinfo">
+                                                                        <div class="tosendernamemain">Chitwan Bindal</div>
+                                                                        <div class="tosenderemail">chitwan001@khath.com</div>
+                                                                    </div>
+                                                                    <div class="tosendercontrols">
+                                                                        <div class="extrainfoto"></div>
+                                                                        <div class="ccbcc">
+                                                                            <div class="cc">Add as CC</div>
+                                                                            <div class="bcc">Add as BCC</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <div class="subjectinput">
+                                            <div class="subjectplaceholder">Subject:</div>
+                                            <div class="textareasubject">
+                                                <input type="text" name="subjectofmail" class="subjectofmail">
+                                            </div>
+                                        </div>
+                                        <div class="bodyinputdiv">
+                                            <div name="bodyinput" class="bodyinput" onkeyup="altertext(event)" contenteditable="true"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="attachments"></div>
+                            </div>
+                        </div>
+                        <div class="composeemailcontrollers">
+                            <div class="maincontrollers">
+                                <div class="textformatting">
+                                    <div class="boldbtn">
+                                        <button class="controllersicon" data-controltype="bold" onclick="altertextonclick(this)">
+                                            <i class="material-icons controllersiconicon">
+                                                format_bold
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="italicbtn">
+                                        <button class="controllersicon" data-controltype="italic" onclick="altertextonclick(this)">
+                                            <i class="material-icons controllersiconicon">
+                                                format_italic
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="underlinebtn">
+                                        <button class="controllersicon" data-controltype="underline" onclick="altertextonclick(this)">
+                                            <i class="material-icons controllersiconicon">
+                                                format_underlined
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="strikebtn">
+                                        <button class="controllersicon" data-controltype="strikeThrough" onclick="altertextonclick(this)">
+                                            <i class="material-icons controllersiconicon">
+                                                strikethrough_s
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="changecolourbtn">
+                                        <button class="controllersicon" data-controltype="colourchange" onclick="altertextonclick(this)">
+                                            <div class="changecontrollercolourbtn">
+                                                <div class="changecolourcontent">
+                                                    <div class="changecontrollercolourA">A</div>
+                                                <div class="colourcontollerrep"></div>
+                                                </div>
+                                                
+                                            </div>
+                                        </button>
+                                        <div class="changecolourcontentdiv" id="changecolourcontentdiv">
+                                            <div class="cccdivdiv">
+                                                <form name="changecontentform" class="cccdivcontmain">
+                                                    <div class="ccdivcontmaincont" id="ccdivcontmaincont">
+
+                                                    </div>
+                                                </form>
+                                                    <div class="addcontentcolor" onclick="add15newcolorsforcontent('ccdivcontmaincont','changetypecolor')" id="addnewcolor">
+                                                        <div class="addnewcoloricon">
+                                                            <div class="icon">
+                                                                <i class="material-icons fornewcoloriconicon">
+                                                                    replay
+                                                                </i>
+                                                                <div class="tooltip">Change</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="textstyles">
+                                    <div class="textfont">
+                                        <div class="fontfont">
+                                            <div class="fontmaincontent">
+                                                <div class="fontmain" id="fontmain">Roboto</div>
+                                            </div>
+                                            <div class="ddwnarrow">
+                                                <div class="icon" onclick="openfontdropdown()">
+                                                    <i class="material-icons">
+                                                        arrow_drop_down
+                                                    </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdownforfont" id="dropdownforfont">
+                                            <div class="sansserif"  onclick="changefontfamily(this)">Sans-Serif</div>
+                                            <div class="poppins" onclick="changefontfamily(this)">Poppins</div>
+                                            <div class="robotocond"  onclick="changefontfamily(this)">Roboto Condensed</div>
+                                            <div class="overpass" onclick="changefontfamily(this)">Overpass</div>
+                                            <div class="merriweather"  onclick="changefontfamily(this)">Merriweather Sans</div>
+                                            <div class="roboto selected" onclick="changefontfamily(this)">Roboto</div>
+                                        </div>
+                                    </div>
+                                    <div class="textsize">
+                                        <div class="textsizerep">
+                                            <i class="material-icons">
+                                                format_size
+                                            </i>
+                                        </div>
+                                        <div class="textsizemain">
+                                            <div class="small" data-sizeid="2" onclick="changetextsize(this)">Small</div>
+                                            <div class="normal selectedsize" data-sizeid="3" onclick="changetextsize(this)">Normal</div>
+                                            <div class="large" data-sizeid="5" onclick="changetextsize(this)">Large</div>
+                                            <div class="huge" data-sizeid="7" onclick="changetextsize(this)">Huge</div>
+                                        </div>
+                                    </div>
+                                    <div class="textbackground">
+                                        <div class="textbackrep" onclick="changebackgroundcolortext()">
+                                            <div class="textbackrepicon">
+                                                <i class="material-icons">
+                                                    edit
+                                                </i>
+                                            </div>
+                                            <div class="textbackcolor"></div>
+                                        </div>
+                                        <div class="changecolourcontentdiv" id="textbackmain">
+                                            <div class="cccdivdiv">
+                                                <form name="changebackgroundform" class="cccdivcontmain">
+                                                    <div class="ccdivcontmaincont" id="changebackgroundmain">
+
+                                                    </div>
+                                                </form>
+                                                    <div class="addcontentcolor" onclick="add15newcolorsforbackground('changebackgroundmain','changebackgroundcolor')" id="addnewcolor">
+                                                        <div class="addnewcoloricon">
+                                                            <div class="icon">
+                                                                <i class="material-icons fornewcoloriconicon">
+                                                                    replay
+                                                                </i>
+                                                                <div class="tooltip">Change</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="textalignment">
+                                    <button class="leftalign" onclick="changetextalign(this)" data-aligntype="justifyLeft">
+                                        <i class="material-icons controllerfamily">
+                                            format_align_left
+                                        </i>
+                                    </button>
+                                    <button class="midalign" onclick="changetextalign(this)" data-aligntype="justifyCenter">
+                                        <i class="material-icons controllerfamily">
+                                            format_align_center
+                                        </i>
+                                    </button>
+                                    <button class="rightalign" onclick="changetextalign(this)" data-aligntype="justifyRight">
+                                        <i class="material-icons controllerfamily">
+                                            format_align_right
+                                        </i>
+                                    </button>
+                                </div>
+                                <div class="bulletsformating">
+                                    <button class="listbuttons" onclick="addlists(this)" data-listtype="insertOrderedList">
+                                        <i class="material-icons controllerfamily">
+                                            format_list_numbered
+                                        </i>
+                                    </button>
+                                    <button class="listbuttons" onclick="addlists(this)" data-listtype="insertUnorderedList">
+                                        <i class="material-icons controllerfamily">
+                                            format_list_bulleted
+                                        </i>
+                                    </button>
+                                    <button class="listbuttons" onclick="removeformat()">
+                                        <i class="material-icons controllerfamily">
+                                            format_clear
+                                        </i>
+                                    </button>
+                                </div>
+                                <div class="undoredo">
+                                    <button class="undoredocont" onclick="undo()">
+                                        <i class="material-icons controllerfamily">
+                                            undo
+                                        </i>
+                                    </button>
+                                    <button class="undoredocont" onclick="redo()">
+                                        <i class="material-icons controllerfamily">
+                                            redo
+                                        </i>
+                                    </button>
+                                </div>
+                                <div class="linksandothers">
+                                    <div class="link">
+                                        <button class="linkbtnscontroller" onclick="linkatext()">
+                                            <i class="material-icons controllerfamily">
+                                                link
+                                            </i>
+                                        </button>
+                                        <div class="pastelink" id="pastelink">
+                                            <form class="linkcontent" name="linkcontent">
+                                                <input type="text" name="linkname" id="linkname" placeholder="Paste your link here">
+                                            </form>
+                                            <div class="createlink" onclick="addalink()">Add</div>
+                                        </div>
+                                    </div>
+                                    <div class="unlink" onclick="unlinkatext()">
+                                        <button class="linkbtnscontroller">
+                                            <i class="material-icons controllerfamily">
+                                                link_off
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="horirow">
+                                        <button class="hrrow" onclick="inserthr()">
+                                            HR
+                                        </button>
+                                    </div>
+                                    <div class="objresize">
+                                        <button class="resizeanobj" onclick="resizeobj()">
+                                            <i class="material-icons controllerfamily">
+                                                photo_size_select_large
+                                            </i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="attachandothers">
+                                    <div class="insertimage">
+                                        <button class="insertimgbtn" onclick="addimage()">
+                                            <i class="material-icons controllerfamily">
+                                                add_a_photo
+                                            </i>
+                                        </button>
+                                        <div class="addimagediv" id="addimagediv">
+                                            <div class="uploadimage"></div>
+                                            <div class="imgseperator"></div>
+                                            <div class="imagethroulink">
+                                                <form name="imagelinkform" class="imagelinkform">
+                                                    <input type="text" name="imagelink" id="imagelink" placeholder="Paste link here">
+                                                </form>
+                                                <div class="addlinkimage" onclick="appendimageintomail()">Add the image</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="attachments">
+                                        <button class="attachmentbtn">
+                                            <i class="material-icons controllerfamily">
+                                                attachment
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="signature">
+                                        <button class="signbtn">
+                                            <div class="penimg"></div>
+                                            <div class="signaturemain">
+                                                <div class="signaturemodal">
+                                                    <div class="addnewsignature">
+                                                        <div class="addsigncontent">
+                                                            <form name="addsignform" class="addsignform">
+                                                                <div class="formcontents">
+                                                                    <div class="signlabels">Signature Name</div>
+                                                                    <input type="text" name="signname" id="" class="signname">
+                                                                </div>
+                                                                <div class="formcontents">
+                                                                    <div class="signlabels">Style your signature</div>
+                                                                    <div class="signtextdiv" contenteditable="true" name="signtext" id="">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="addsignbtn"></div>
+                                                    </div>
+                                                    <div class="useprevioussign"></div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="extracontrollers">
+                                <div class="sendemailbtn" onclick="addtoinput()">Send</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="sidepanel" id="sidepanel">
+                    <input class="sidemailcontrolsinput" name="selectedemailsforproperties"></input>
+                    <div class="sideemailcontrols">
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('read')">
+                            <div class="icon">
+                                <i class="material-icons sidecontrolsicon">
+                                    mark_as_unread
+                                </i>
+                                <div class="markasurtt">Mark as Read</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('unread')">
+                            <div class="icon">
+                                <i class="material-icons sidecontrolsicon">
+                                    mark_email_unread
+                                </i>
+                                <div class="markasurtt">Mark as Unread</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('fav')">
+                            <div class="icon">
+                                <i class="material-icons">
+                                    star_border
+                                </i>
+                                <div class="tooltip">Star</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('addtolabel')">
+                            <div class="icon">
+                                <i class="material-icons sidecontrolsicon">
+                                    new_label
+                                </i>
+                                <div class="newlabeltt">New Label</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('reply')">
+                            <div class="icon">
+                                <i class="material-icons">
+                                    reply
+                                </i>
+                                <div class="tooltip">Reply</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('forward')">
+                            <div class="icon">
+                                <i class="material-icons sidecontrolsicon">
+                                    forward
+                                </i>
+                                <div class="forwardtt">Forward</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('archive')">
+                            <div class="icon">
+                                <i class="material-icons sidecontrolsicon">
+                                    archive
+                                </i>
+                                <div class="forwardtt">Archive</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('bin')">
+                            <div class="icon">
+                                <i class="material-icons">
+                                    delete
+                                </i>
+                                <div class="sidepaneltt">Bin</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('report')">
+                            <div class="icon">
+                                <i class="material-icons">
+                                    report
+                                </i>
+                                <div class="sidepaneltt">Report</div>
+                            </div>
+                        </div>
+                        <div class="contentindcontrolsindmail" onclick="changeselectedmailprops('flag')">
+                            <div class="icon">
+                                <i class="material-icons sidecontrolsicon">
+                                    outlined_flag
+                                </i>
+                                <div class="faitt">Flag as inappropriate</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="sideemailcontrolsadditional"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="createlabelmodal">
+        <div class="createmodal">
+            <div class="createlabelform">
+                <form novalidate onsubmit="return(createlabelvalidate())" class="createlabelmainform" name="newlabelform">
+                    <div class="createlabelformcontent">
+                        <div class="newlabeloptions">
+                            <div class="newlabelinputlabels">New label name:</div>
+                            <div class="inputnewlabelinputdiv">
+                                <input class="newlabelinputfields" type="text" name="newlabelname" id="newlabelname" onkeyup="writesamplelabel()">
+                            </div>
+                        </div>
+                        <div class="newlabeloptions">
+                            <div class="newlabelinputlabels">Choose a color:</div>
+                            <div class="inputnewlabelinputdiv">
+                                <div class="newcolordiv" >
+                                    <div class="newcolors">
+                                        <div class="newcolorscontent" id="newcolorscontent">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="addnewcolor" onclick="add15newcolors('newcolorscontent','writesamplelabel')" id="addnewcolor">
+                                        <div class="addnewcoloricon">
+                                            <div class="icon">
+                                                <i class="material-icons fornewcoloriconicon">
+                                                    replay
+                                                </i>
+                                                <div class="tooltip">Change</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="newlabeloptions">
+                            <div class="newlabelinputlabels iconlabel">Choose an icon:</div>
+                            <div class="iconlabelscontentdiv">
+                                <div class="iconlabelscontent">
+                                    <div class="iconlabelscontentmain" id="iconlabelscontent">
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+                <div class="samplenewlabel">
+                    <div class="samplenewlabelcontent">
+                        <div class="samplelabelnamediv">
+                            <div class="selectedlabelicon">
+                                <i class="material-icons" id="selectedlabeliconid">
+                                </i>
+                            </div>
+                            <div class="selectedlabelname" id="selectedlabelname">Label Name Here</div>
+                        </div>
+                        <div class="newlabelsemailslist">
+                            <div class="emailistbar"></div>
+                            <div class="emailslist"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="createlabelactions">
+                <div class="modifylabels" onclick="modifyexistlabel()">Modify existing labels</div>
+                <div class="createlabelbtns">
+                    <div class="cancelcreatelabelbtn" onclick="closecreatelabelmodal()">Cancel</div>
+                    <input type="submit" class="successcreatelabelbtn" value="Create" onclick="addnewlabelreq()"> 
+                </div>
+            </div>
+        </div>
+        <div class="modifylabelmodal"></div>
+        <div class="errormodal" id="errorcreatinglabel">
+            <div class="closebtn">
+                <i class="material-icons closebtnbtn">
+                    close
+                </i>
+            </div>
+            We encountered a problem! Please try again!</div>
+        <div class="successmodal" id="successcreatinglabel">
+            <div class="closebtn">
+                <i class="material-icons closebtnbtn">
+                    close
+                </i>
+            </div>
+            Success!</div>
+    </div>
+    <div id="blanksuborcont">
+        <div class="blanksuborcontmodal">
+            <div class="bsoctitle">You missed the subject or the body of the email!</div>
+            <div class="bsocbody">The email can still be sent but it is suggested not to do so.<br>Click on <strong>Proceed</strong> to submit or <strong>Edit</strong> to return back and edit the mail</div>
+            <div class="bsoccontrols">
+                <div class="bsoccontrolsmain">
+                    <div class="editbtn" onclick="closediv('blanksuborcont')">
+                        Edit
+                    </div>
+                    <div class="submitmailbtn" onclick="sendtheemail()">
+                        Proceed
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="norecepdefined">
+        <div class="norecepdefinedmodal">
+            <div class="errornorecepdefined">Error</div>
+            <div class="bodyerrnorecep">Please select at least one receipent</div>
+            <div class="controlsnorecep">
+                <div class="okbtnnorecep" onclick="closediv('norecepdefined')">OK</div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="main.js" async defer></script>
+</body>
+</html>

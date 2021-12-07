@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Signup - SANDESH</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="signup.js"></script>
+    <div class="mainbody">
+    <div class="container">
+        <div class="formcontent">
+            <div class="title">
+                <div class="wel">Welcome!</div>
+                <div class="createacc">Please continue by creating an account.</div>
+            </div>
+            <div class="stepscomp">
+                <div class="stepscont">
+
+                    <div class="steps">
+                        <div class="step activestep" id="step1" >Step 1</div>
+                        <div class="step notactivestep" id="step2">Step 2</div>
+                    </div>
+                    <div class="loader">
+                        <div class="loaderdiv"></div>
+                    </div>
+                </div>
+            </div>
+        <form class="form" name="createaccount" novalidate onsubmit="return(validate())">
+            <div class="pages">
+            <div id="1st_page" class="page1">     
+                <div class="nameinput">
+                    <input type="text" id="fname" class="form__name" name="firstname" autofocus placeholder="First Name" required>
+                    <input type="text" id="lname" class="form__name" name="lastname" placeholder="Last Name" required>
+                </div>
+            
+                <div class="input">
+                    <input type="text" id="email" class="form__input" name="email" placeholder="Email Address"required>
+                </div>
+            
+                <div class="input">
+                    <input type="password" id="pass" class="form__input" name="pass" placeholder="Password"required>
+                </div>
+            
+                <div class="input">
+                    <input type="password" id="confpass" class="form__input" name="confpass" placeholder="Confirm password"required>
+                </div>
+                <input type="button" value="Continue" class="form__button" onclick="next_page()">
+            </div>
+            <div id="2nd_page" class="page2" style="display: none;">
+                <div class="dobinput">
+                    <input disabled placeholder="Date of Birth" class="inputtdob">
+                    <input type="date" id="dob" class="inputtdob" name="dob" autofocus placeholder="Date of Birth" required>
+                </div>
+
+                <div class="input">
+                    <input type="number" class="form__input" name="phone" id="phone" autofocus placeholder="Phone Number" required>
+                </div>
+
+                <div class="input">
+                    <input type="email" class="form__input" name="remail" id="remail" autofocus placeholder="Recovery mail" required>
+                </div>
+                <div class="back">
+                    <div class="backbtn">
+                        <div class="backarr">
+                            <i class="material-icons">
+                                arrow_back
+                                </i>
+                        </div>
+                        <div class="backbtncont" onclick="step1animation()">Go back</div>
+                    </div>
+                    <input type="submit" class="form__button">
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</body>

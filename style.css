@@ -1,0 +1,180 @@
+body{
+    margin: 0;
+}
+.mainbody{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+}
+.loginmodal{
+    place-self: center;
+    /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(192, 191, 191, 0.19); */
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    width: 30%;
+    height: 60%;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    border-radius: 10px;
+}
+.loginform{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    position: relative;
+}
+.formcontent{
+    display: grid;
+    width: 80%;
+    height: 80%;
+    place-self: center;
+    grid-template-rows: 2fr 2fr 1fr 2fr 2fr 2fr 2fr;
+    grid-gap: 5px;
+}
+.inputlogin{
+    outline: none;
+    font-size: 15px;
+    border: 0;
+    box-shadow: rgb(0 0 0 / 2%) 0px 0px 0px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+    border-radius: 5px;
+}
+.forgotpass{
+    display: grid;
+    place-self: center;
+    color: blueviolet;
+    cursor: pointer;
+}
+.submitbtn{
+    background-color: #77A6F7;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    color: white;
+}
+.submitbtn:hover{
+    background-color: #77A6F7d2;
+}
+.title{
+    /* font-family: 'Zen Kaku Gothic Antique', sans-serif; */
+    font-family: 'Roboto Condensed', sans-serif;
+    display: grid;
+    justify-self: center;
+    align-self: end;
+    font-size: 2.5vw;
+}
+.inputlogin:focus{
+    border: 2px solid #77A6F7;
+}
+
+.createacc{
+    display: grid;
+    place-self: center;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+.createacc:hover{
+    color: rgba(0, 0, 0, 0.863);
+}
+#inmaerr{
+    background-color: red;
+    color: white;
+    opacity: 0;
+    width: 25%;
+    justify-self: center;
+    height: 7%;
+    margin-top: 1%;
+    border-radius: 10px;
+    place-content: center;
+}
+.forgpassmodal{
+    position: absolute;
+    z-index: -2;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(214 208 208 / 86%);
+    display: none;
+    /* position: relative; */
+}
+.modal{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    width: 50%;
+    height: 40%;
+    place-self: center;
+    background-color: #fafafa;
+    border-radius: 10px;
+    border: 0;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+}
+.forgpass{
+    place-self: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 2vw;
+}
+.modaltitle{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+.wearehere{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.5vw;
+    color: #561096;
+    justify-self: center;
+    font-family: 'Poppins', sans-serif;
+}
+.modalcontent{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+.mainmodal{
+    display: grid;
+}
+.recemail{
+    display: none;
+}
+.linkcontentmodal{
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+.tryanother{
+    display: grid;
+    padding-left: 5%;
+}
+.trycontent{
+    align-self: center;
+    display: grid;
+    width: fit-content;
+    color: blue;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+.closebtn{
+    position: absolute;
+    font-size: 2vw;
+    right: 0.5vw;
+    top: 1vh;
+    cursor: pointer;
+}
+.inputemaildiv{
+    display: grid;
+}
+.warn{
+    font-size: 25px;
+    background-color: transparent;
+    color: red;
+    cursor: pointer;
+}
+.warndiv{
+    display: none;
+    position: absolute;
+    /* z-index: 2000; */
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    align-self: center;
+    background-color: transparent;
+    left: 91%;
+    top: 10%;
+}

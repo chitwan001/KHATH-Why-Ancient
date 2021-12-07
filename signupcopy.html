@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signupcopy.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="body">
+        <div class="modal">
+            <div class="title">
+                <div class="wel">Welcome!</div>
+                <div class="createacc">Please continue by creating an account.</div>
+            </div>
+            <div class="content">
+                <form action="" class="signupform">
+                        <div class="pages">
+                            <div id="1st_page" class="page1">     
+                                <div class="nameinput">
+                                    <div class="fname">
+                                        <input type="text" class="form__name" name="firstname" autofocus placeholder="First Name" required>
+                                    </div>
+                                    <div class="lname">
+                                        <input type="text" class="form__name" name="lastname" autofocus placeholder="Last Name" required>
+                                    </div>
+                                </div>
+                            
+                                <div class="input">
+                                    <input type="text" class="form__input" name="email" autofocus placeholder="Email Address"required>
+                                </div>
+                            
+                                <div class="input">
+                                    <input type="password" class="form__input" name="passwd" autofocus placeholder="Password"required>
+                                </div>
+                            
+                                <div class="input">
+                                    <input type="password" class="form__input" name="copasswd" autofocus placeholder="Confirm password"required>
+                                </div>
+                                <input type="button" value="Next Page" class="form__button" onclick="next_page()">
+                            </div>
+                            <!-- <div id="2nd_page" class="page" style="display: none;">
+                                <div class="input">
+                                    <label for="DOB"class="form__name" style="font-size: 16.5px; width: 200px;">Date of Birth</label>
+                                    <input type="date" id="DOB" class="form__name" name="dob" autofocus placeholder="Date of Birth" required>
+                                </div>
+                
+                                <div class="input">
+                                    <input type="number" class="form__input" name="phone" autofocus placeholder="Phone Number" required>
+                                </div>
+                
+                                <div class="input">
+                                    <input type="email" class="form__input" name="remail" autofocus placeholder="Recovery mail" required>
+                                </div>
+                                <input type="submit" class="form__button">
+                            </div> -->
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
